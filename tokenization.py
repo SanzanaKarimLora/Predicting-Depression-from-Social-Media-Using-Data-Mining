@@ -1,6 +1,7 @@
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import pandas as pd
+from pandas import DataFrame
 
 import nltk
 nltk.download('wordnet')
@@ -47,5 +48,8 @@ for i in range(10278):
  #WordNet Lemmatization
  wordNetLemmatizedWords = [nltk.stem.WordNetLemmatizer().lemmatize(word) for word in words]
  df['WordNetLemmatizer'] = pd.Series(wordNetLemmatizedWords)
+
+ token_csv = df.to_csv('token_tweet.csv')
  print(df)
+
 

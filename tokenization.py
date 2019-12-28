@@ -40,16 +40,18 @@ for i in range(10278):
  df['SnowballStemmedWords'] = pd.Series(snowballStemmedWords)
  print(df)
 
+
+
 #LEMMATIZATION
+
 for i in range(10278):
- words  = nltk.tokenize.WhitespaceTokenizer().tokenize(data["message"][i])
+ words = nltk.tokenize.WhitespaceTokenizer().tokenize(data["message"][i])
  df = pd.DataFrame()
  df['OriginalWords'] = pd.Series(words)
  #WordNet Lemmatization
  wordNetLemmatizedWords = [nltk.stem.WordNetLemmatizer().lemmatize(word) for word in words]
  df['WordNetLemmatizer'] = pd.Series(wordNetLemmatizedWords)
-
- token_csv = df.to_csv('token_tweet.csv')
+ token_csv = df['WordNetLemmatizer'].to_csv('token_tweet.csv',mode='a', header=False)
  print(df)
 
 

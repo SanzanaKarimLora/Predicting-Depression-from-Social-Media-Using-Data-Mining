@@ -56,7 +56,7 @@ processed_features = vectorizer.fit_transform(processed_features).toarray()
 
 
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(processed_features, labels, test_size=0.1, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(processed_features, labels, test_size=0.2, random_state=0)
 
 from sklearn.ensemble import RandomForestClassifier
 

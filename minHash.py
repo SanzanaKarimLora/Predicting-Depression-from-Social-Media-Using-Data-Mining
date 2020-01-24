@@ -223,7 +223,7 @@ data9 = ['and','depression']
 data10 = ['thats', 'a', 'good', 'thing']
 sad = ['mistake', 'bad', 'depression','sad', 'miss','unhappy']
 happy = ['happy','well','good','excellent','enjoy','wow', 'wonder', 'miracle','great','fine','satisfy','favor','sweet']
-
+'''''
 m1, m2 = MinHash(), MinHash()
 
 for d in data1:
@@ -459,7 +459,20 @@ s2 = set(happy)
 actual_jaccard = float(len(s1.intersection(s2)))/float(len(s1.union(s2)))
 print("Actual Jaccard for data9 and sad is", actual_jaccard)
 
-'''
+'''''
+
+
+with open ('token.csv') as f:
+    s1 = set(f.read())
+
+with open('sad.csv') as s:
+    s2 = set(s.read())
+
+actual_jaccard = float(len(s1.intersection(s2)))/float(len(s1.union(s2)))
+print("Actual Jaccard for dataset and sad text is", actual_jaccard)
+
+
+'''''
 ###run properly###
 from datasketch import MinHash
 m1, m2 = MinHash(), MinHash()
@@ -476,7 +489,37 @@ with open('sad.csv') as s:
         m2.update(d.encode('utf8'))
 
 print("Estimated Jaccard for dataset and sad text is", m1.jaccard(m2))
-'''
+'''''
+import matplotlib.pyplot as plt
+d1 = 'Depressive', 'Non-depressive'
+d2 = [56.51,43.49]
+colors = ['blue', 'yellow']
+figureObject, axesObject = plt.subplots()
+axesObject.pie(d2,
 
 
+
+               autopct='%1.2f',
+
+               startangle=90)
+
+# Aspect ratio - equal means pie is a circle
+patches, texts = plt.pie(d2, colors=colors, shadow=False, startangle=90)
+plt.legend(patches, d1, loc="best")
+axesObject.axis('equal')
+
+plt.show()
+
+'''''
+import matplotlib.pyplot as plt
+
+labels = ['Depressive', 'Non-depressive']
+sizes = [55.47,44.53]
+colors = ['green', 'red']
+patches, texts = plt.pie(sizes, colors=colors, shadow=True, startangle=90)
+#plt.legend(patches, labels, loc="best")
+plt.axis('equal')
+plt.tight_layout()
+plt.show()
+'''''
 
